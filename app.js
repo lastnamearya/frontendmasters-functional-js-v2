@@ -1,9 +1,11 @@
-var person = {};
+// We can assign Properties ( Key: Value ) Pairs to an Array.
+var person = [];
+
 person.name = "Mrs. White";
 
-// Here Garbage collector won't remove old memory reference.
 var who = person.name;
+
 console.log(who);
 
-person.name = "Mr. White";
-console.log(who);
+// typeof an Array is always be Object.
+console.log(typeof person);
