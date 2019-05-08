@@ -1,26 +1,26 @@
-var person = [];
-var plea = "wouldShe";
+var box = {};
 
-person.name = "Mrs. White";
+// We can use Bracket Notation on an Object to define Properties on an Object
+box["material"] = "cardboard";
 
-var who = person.name;
+// We can use Dot Notation on an Object to define Properties on an Object.
+box.color = "red";
 
-// That's how we create Properties on our Array Object.
-person["hello"] = "HI";
+// Here Numeric Value is going to be coerced to a String Value as Property.
+box[0] = "Zero";
 
-// Here 0 will be stringified to "0"
-person[0] = "I was not in the Billiards room";
+box["$^&"] = "testing `123`";
 
-person[plea] = "I would never!";
+// We can't assign a string as a property on Object using Dot Notation. It'll throw Unexpected Error;
 
-console.log(person);
+// box."abc" = "Not Possible";
 
-// person.length will be 1 and "hello" & plea ("wouldShe") are going to be properties.
+// Dot Notation behind the scenes covert that Numeric or passed value into String behind the scenes.
 
-var x = [];
-var b = 1;
+// For that we've to use Brakcet Notation
+box["abc"] = "Not Possible";
 
-// Here Numeric Value is going as an Entry in Memory Location of Array.
-x[b] = "hello";
+// We can write an Expression in Bracket Notation.
+box[2 + 2] = 4;
 
-console.log(x);
+console.log(box);
