@@ -1,7 +1,7 @@
-obj = {};
+const a = [1, 2, 3];
 
-// Js will accept this function as key and stringify it.
-obj[function() {}] = false;
+const b = a.reduce(function(prev, acc) {
+  return prev + acc;
+}, 0);
 
-// It'll coerced to a String Value. We can't call this function later on.
-console.log(typeof Object.keys(obj)[0]);
+console.log(b);
