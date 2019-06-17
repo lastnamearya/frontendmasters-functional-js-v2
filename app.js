@@ -1,16 +1,25 @@
-// How do we loop through an Object to get values or keys?
+const game = {
+  suspects: [
+    {
+      name: "Rusty",
+      color: "orange"
+    },
+    {
+      name: "Miss Scarlet",
+      color: "red"
+    }
+  ]
+};
 
-var obj = {};
+function foo() {
+  for (let i = 0; i < game.suspects.length; i++) {
+    console.log(game.suspects[i]);
+  }
+}
 
-obj[1] = "one";
-obj[2] = "second";
-obj[3] = "third";
-obj[4] = "fourth";
+foo();
 
-var keyArr = Object.keys(obj); // [1, 2, 3, 4];
-
-console.log(keyArr);
-
-var valuesArr = Object.values(obj); // [“one”, “two”, “three”, “four”];
-
-console.log(valuesArr);
+for (let key in game) {
+  // Here we can't use dot notation, because we're dynamically updating the value of key on each iteration
+  console.log(game[key]);
+}
