@@ -1,13 +1,29 @@
-// Object.entries ~ Loop over Object key and Values
+// Destructure
 
-const obj = {
-  a: 1,
-  b: 2,
-  c: 3,
-  d: 4,
-  e: 5
-};
+const suspects = [
+  {
+    name: "Rusty",
+    color: "orange"
+  },
+  {
+    name: "Miss Scarlet",
+    color: "red"
+  }
+];
 
-Object.entries(obj).map(([key, value]) =>
-  console.log(`key: ${key} & value: ${value}`)
-);
+// Normal Developer Approach
+
+const [color1, color2] = [suspects[0].color, suspects[1].color];
+
+// Advanced Destructuring
+
+const [{ color: firstColor }, { color: secondColor }] = suspects;
+
+console.log(firstColor);
+console.log(secondColor);
+
+const { color } = suspects[0];
+
+console.log(color1);
+console.log(color2);
+console.log(color);
