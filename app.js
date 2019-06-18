@@ -27,3 +27,14 @@ suspects.forEach(function(element) {
 });
 
 console.log(suspectsList);
+
+// _.each() ~ Underscore.js
+
+const suspectsArr = [];
+
+_.each(suspects, function(name) {
+  let suspectObj = createSuspectObject(name);
+  suspectsArr.push(suspectObj);
+});
+
+console.log(suspectsArr);
