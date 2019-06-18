@@ -1,29 +1,29 @@
-// Destructure
+// List Transformations
 
-const suspects = [
-  {
-    name: "Rusty",
-    color: "orange"
-  },
-  {
-    name: "Miss Scarlet",
-    color: "red"
-  }
-];
+function createSuspectObject(name) {
+  return {
+    name: name,
+    color: name.split("")[1],
+    speak() {
+      console.log("My name is ", name);
+    }
+  };
+}
 
-// Normal Developer Approach
+const suspects = ["Miss Scarlet", "Colonel1 Mustard", "Mr. White"];
 
-const [color1, color2] = [suspects[0].color, suspects[1].color];
+// Mapping Over an Array using .map
 
-// Advanced Destructuring
+const mapArr = suspects.map(person => createSuspectObject(person));
 
-const [{ color: firstColor }, { color: secondColor }] = suspects;
+console.log(mapArr);
 
-console.log(firstColor);
-console.log(secondColor);
+// forEach
 
-const { color } = suspects[0];
+const suspectsList = [];
 
-console.log(color1);
-console.log(color2);
-console.log(color);
+suspects.forEach(function(element) {
+  suspectsList.push(createSuspectObject(element));
+});
+
+console.log(suspectsList);
