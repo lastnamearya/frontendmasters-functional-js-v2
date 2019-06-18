@@ -1,40 +1,34 @@
-// List Transformations
+// My own made _.each() Utility function
 
-function createSuspectObject(name) {
-  return {
-    name: name,
-    color: name.split("")[1],
-    speak() {
-      console.log("My name is ", name);
+const _ = {};
+
+_.each = function(list, callback) {
+  if (typeof list === "object") {
+    if (Array.isArray(list)) {
+      for (let i = 0; i < list.length; i++) {
+        callback(list[i]);
+      }
+    } else {
+      for (let key in list) {
+        callback(list[key]);
+      }
     }
-  };
-}
+  }
+};
 
-const suspects = ["Miss Scarlet", "Colonel1 Mustard", "Mr. White"];
+const exArr = [1, 2, 3, 4];
 
-// Mapping Over an Array using .map
+const exObj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4
+};
 
-const mapArr = suspects.map(person => createSuspectObject(person));
-
-console.log(mapArr);
-
-// forEach
-
-const suspectsList = [];
-
-suspects.forEach(function(element) {
-  suspectsList.push(createSuspectObject(element));
+_.each(exArr, function(item) {
+  console.log(item);
 });
 
-console.log(suspectsList);
-
-// _.each() ~ Underscore.js
-
-const suspectsArr = [];
-
-_.each(suspects, function(name) {
-  let suspectObj = createSuspectObject(name);
-  suspectsArr.push(suspectObj);
+_.each(exObj, function(item) {
+  console.log(item);
 });
-
-console.log(suspectsArr);
