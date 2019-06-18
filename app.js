@@ -1,3 +1,5 @@
+// Find Rusty
+
 const game = {
   suspects: [
     {
@@ -13,13 +15,25 @@ const game = {
 
 function foo() {
   for (let i = 0; i < game.suspects.length; i++) {
-    console.log(game.suspects[i]);
+    if (game.suspects[i].name === "Rusty") {
+      console.log("Rusty found");
+    }
   }
 }
 
 foo();
 
-for (let key in game) {
-  // Here we can't use dot notation, because we're dynamically updating the value of key on each iteration
-  console.log(game[key]);
+function bar() {
+  for (let key in game.suspects) {
+    if (game.suspects[key]["name"] === "Rusty") {
+      console.log("We found Rusty");
+    }
+  }
 }
+
+bar();
+
+// for (let key in game) {
+//   // Here we can't use dot notation, because we're dynamically updating the value of key on each iteration
+//   console.log(game[key]);
+// }
