@@ -1,39 +1,13 @@
-// Find Rusty
+// Object.entries ~ Loop over Object key and Values
 
-const game = {
-  suspects: [
-    {
-      name: "Rusty",
-      color: "orange"
-    },
-    {
-      name: "Miss Scarlet",
-      color: "red"
-    }
-  ]
+const obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4,
+  e: 5
 };
 
-function foo() {
-  for (let i = 0; i < game.suspects.length; i++) {
-    if (game.suspects[i].name === "Rusty") {
-      console.log("Rusty found");
-    }
-  }
-}
-
-foo();
-
-function bar() {
-  for (let key in game.suspects) {
-    if (game.suspects[key]["name"] === "Rusty") {
-      console.log("We found Rusty");
-    }
-  }
-}
-
-bar();
-
-// for (let key in game) {
-//   // Here we can't use dot notation, because we're dynamically updating the value of key on each iteration
-//   console.log(game[key]);
-// }
+Object.entries(obj).map(([key, value]) =>
+  console.log(`key: ${key} & value: ${value}`)
+);
