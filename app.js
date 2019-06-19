@@ -14,9 +14,13 @@ _.map = function(list, callback) {
       returnArr.push(callback(list[i]));
     }
     return returnArr;
+  } else {
+    console.error("Please pass array as an arugment to _.map()");
   }
 };
 
 const brokenWeapons = _.map(weapons, makeBroken);
 
 console.log(brokenWeapons);
+
+console.log(_.map({}, makeBroken));
