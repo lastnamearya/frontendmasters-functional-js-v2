@@ -1,26 +1,30 @@
-// _.map() Exercise
+// Filter
 
-const weapons = ["candlestick", "lead pipe", "revolver"];
-
-const makeBroken = function(item) {
-  return `broken ${item}`;
-};
+const mixArr = [2, 4, 3, 7, 8, 12, 13, 17, 18, 22, 23, 25];
 
 const _ = {};
-_.map = function(list, callback) {
+
+// It'll return new Array with Selected Indices
+
+_.filter = function(list, callback) {
   if (Array.isArray(list)) {
-    const returnArr = [];
+    const filteredArr = new Array();
     for (let i = 0; i < list.length; i++) {
-      returnArr.push(callback(list[i]));
+      let res = callback(list[i]);
+      if (res) {
+        filteredArr.push(list[i]);
+      }
     }
-    return returnArr;
-  } else {
-    console.error("Please pass array as an arugment to _.map()");
+    return filteredArr;
   }
 };
 
-const brokenWeapons = _.map(weapons, makeBroken);
+// const filteredArr = mixArr.filter(function(i) {
+//   return i % 2 === 0;
+// });
 
-console.log(brokenWeapons);
+const filteredArr = _.filter(mixArr, function(i) {
+  return i % 2 === 0;
+});
 
-console.log(_.map({}, makeBroken));
+console.log(filteredArr);
