@@ -6,9 +6,39 @@ const _ = {};
 
 // Default Implementation only accepts an Array
 
-_.sort = function(list) {
-  if (Array.isArray(list)) {
+_.sort = function(input) {
+  if (Array.isArray(input)) {
     const sortedArray = [];
+
+    let resultArr = [];
+
+    function test() {
+      let list = Array.from(input);
+      let iterable = 0;
+
+      for (let i = 0; i < list.length; i += 2) {
+        let res = compare(list[i], list[i + 1]);
+
+        if (res < 0) {
+          sortedArray.push(list[i]);
+          sortedArray.push(list[i + 1]);
+        } else if (res > 0) {
+          sortedArray.push(list[i + 1]);
+          sortedArray.push(list[i]);
+        } else {
+          sortedArray.push(list[i]);
+        }
+
+        iterable++;
+
+        if (iterable == Math.ceil(list.length / 2)) {
+          console.log("loop over finally");
+          resultArr = Array.from(sortedArray);
+          sortedArray.length = [];
+          console.log(sortedArray);
+        }
+      }
+    }
 
     function compare(a, b) {
       if (a < b) {
@@ -20,23 +50,14 @@ _.sort = function(list) {
       }
     }
 
-    for (let i = 0; i < list.length; i += 2) {
-      console.log(list[i]);
-      console.log(list[i + 1]);
-
-      let res = compare(list[i], list[i + 1]);
-
-      if (res < 0) {
-        sortedArray.push(list[i]);
-        sortedArray.push(list[i + 1]);
-      } else if (res > 0) {
-        sortedArray.push(list[i + 1]);
-        sortedArray.push(list[i]);
-      } else {
-        sortedArray.push(list[i]);
-      }
+    for (let i = 0; i < input.length; i++) {
+      console.log(`loop ran ${i} time`);
+      test();
     }
-    return sortedArray;
+
+    test();
+
+    return resultArr;
   }
 };
 
