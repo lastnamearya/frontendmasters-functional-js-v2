@@ -1,21 +1,23 @@
-console.log(x);
-console.log(y);
-console.log(z);
-console.log(arrFunc);
+// _.filter() Method ~ Array
 
-// The reason in Hoisting we get undefined on Line 1 is because assignmet will happen during Interpetation Phase.
-var x = 1;
+const exArr = [1, 5, 7, 6, 4, 9, 2, 13, 17, 12, 19, 18];
 
-// Functions are Special Case where whole body of the function can be accessed above on line 2. Actually Now I got the reason ~ Here assignmet happens in Interpetatio Phase.
+const _ = {};
 
-function y() {
-  console.log("y");
-}
-
-// Objects ~ Still we get undefined on Line 3.
-var z = {
-  a: 1
+_.filter = function(list, callback) {
+  if (Array.isArray(list)) {
+    const filteredArr = [];
+    for (let i = 0; i < exArr.length; i++) {
+      if (callback(list[i])) {
+        filteredArr.push(list[i]);
+      }
+    }
+    return filteredArr;
+  }
 };
 
-// Here Assignment will happen in the Interpetation Step, so you'll get undefined on line 4.
-var arrFunc = () => console.log("Arr Function");
+const result = _.filter(exArr, function(i) {
+  return i % 2 === 0;
+});
+
+console.log(result);
