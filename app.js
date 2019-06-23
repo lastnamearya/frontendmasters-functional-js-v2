@@ -1,30 +1,44 @@
-// Filter
+// _.each()
 
-const mixArr = [2, 4, 3, 7, 8, 12, 13, 17, 18, 22, 23, 25];
+const exArr = [1, 5, 7, 6, 4, 9, 2, 13, 17, 12, 19, 18];
+
+const exObj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4,
+  e: 5
+};
 
 const _ = {};
 
-// It'll return new Array with Selected Indices
+_.each = function(list, callback) {
+  // Case 1: If list is an Array
 
-_.filter = function(list, callback) {
-  if (Array.isArray(list)) {
-    const filteredArr = new Array();
+  if (typeof list === "object" && Array.isArray(list)) {
     for (let i = 0; i < list.length; i++) {
-      let res = callback(list[i]);
-      if (res) {
-        filteredArr.push(list[i]);
-      }
+      // Here i and list is optional
+
+      callback(list[i], i, list);
     }
-    return filteredArr;
+  }
+
+  // Case 2: Loop over an Object
+  else if (typeof list === "object") {
+    for (let key in list) {
+      // Here i and list is optional
+
+      callback(list[key], key, list);
+    }
+  } else {
+    console.error("Please pass an Array");
   }
 };
 
-// const filteredArr = mixArr.filter(function(i) {
-//   return i % 2 === 0;
-// });
-
-const filteredArr = _.filter(mixArr, function(i) {
-  return i % 2 === 0;
+_.each(exArr, function(i) {
+  console.log(i);
 });
 
-console.log(filteredArr);
+_.each(exObj, function(i) {
+  console.log(i);
+});
