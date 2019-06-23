@@ -1,44 +1,21 @@
-// _.each()
+// _.map() Method ~ Array
 
 const exArr = [1, 5, 7, 6, 4, 9, 2, 13, 17, 12, 19, 18];
 
-const exObj = {
-  a: 1,
-  b: 2,
-  c: 3,
-  d: 4,
-  e: 5
-};
-
 const _ = {};
 
-_.each = function(list, callback) {
-  // Case 1: If list is an Array
-
-  if (typeof list === "object" && Array.isArray(list)) {
+_.map = function(list, callback) {
+  if (Array.isArray(list)) {
+    let mappedArr = [];
     for (let i = 0; i < list.length; i++) {
-      // Here i and list is optional
-
-      callback(list[i], i, list);
+      mappedArr.push(callback(list[i]));
     }
-  }
-
-  // Case 2: Loop over an Object
-  else if (typeof list === "object") {
-    for (let key in list) {
-      // Here i and list is optional
-
-      callback(list[key], key, list);
-    }
-  } else {
-    console.error("Please pass an Array");
+    return mappedArr;
   }
 };
 
-_.each(exArr, function(i) {
-  console.log(i);
+const resultArr = _.map(exArr, function(i) {
+  return i + 1;
 });
 
-_.each(exObj, function(i) {
-  console.log(i);
-});
+console.log(resultArr);
