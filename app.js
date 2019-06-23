@@ -1,23 +1,25 @@
-// _.filter() Method ~ Array
+// Some Object Properties
 
-const exArr = [1, 5, 7, 6, 4, 9, 2, 13, 17, 12, 19, 18];
-
-const _ = {};
-
-_.filter = function(list, callback) {
-  if (Array.isArray(list)) {
-    const filteredArr = [];
-    for (let i = 0; i < exArr.length; i++) {
-      if (callback(list[i])) {
-        filteredArr.push(list[i]);
-      }
-    }
-    return filteredArr;
-  }
+var exObj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4,
+  e: 5,
+  f: 6
 };
 
-const result = _.filter(exArr, function(i) {
-  return i % 2 === 0;
-});
+// hasOwnProperty() ~ Checks whether a property exists on an Object or not.
+console.log(exObj.hasOwnProperty(length));
 
-console.log(result);
+// Object.values ~ return us an Array of Keys of the Object
+
+const keyArr = Object.keys(exObj);
+
+console.log(keyArr);
+
+// Object.keys ~ return us an Array of Object key ~ values
+
+const valuesArr = Object.values(exObj);
+
+console.log(valuesArr);
