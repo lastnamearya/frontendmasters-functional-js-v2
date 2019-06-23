@@ -1,25 +1,45 @@
-// Some Object Properties
+// _.map() Method ~ Array
 
-var exObj = {
-  a: 1,
-  b: 2,
-  c: 3,
-  d: 4,
-  e: 5,
-  f: 6
+const exArr = [5, 1, 3, 7, 4];
+
+const _ = {};
+
+// Default Implementation only accepts an Array
+
+_.sort = function(list) {
+  if (Array.isArray(list)) {
+    const sortedArray = [];
+
+    function compare(a, b) {
+      if (a < b) {
+        return -1;
+      } else if (a > b) {
+        return 1;
+      } else if (a == b) {
+        return 0;
+      }
+    }
+
+    for (let i = 0; i < list.length; i += 2) {
+      console.log(list[i]);
+      console.log(list[i + 1]);
+
+      let res = compare(list[i], list[i + 1]);
+
+      if (res < 0) {
+        sortedArray.push(list[i]);
+        sortedArray.push(list[i + 1]);
+      } else if (res > 0) {
+        sortedArray.push(list[i + 1]);
+        sortedArray.push(list[i]);
+      } else {
+        sortedArray.push(list[i]);
+      }
+    }
+    return sortedArray;
+  }
 };
 
-// hasOwnProperty() ~ Checks whether a property exists on an Object or not.
-console.log(exObj.hasOwnProperty(length));
+const result = _.sort(exArr);
 
-// Object.values ~ return us an Array of Keys of the Object
-
-const keyArr = Object.keys(exObj);
-
-console.log(keyArr);
-
-// Object.keys ~ return us an Array of Object key ~ values
-
-const valuesArr = Object.values(exObj);
-
-console.log(valuesArr);
+console.log(result);
