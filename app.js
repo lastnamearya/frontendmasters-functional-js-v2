@@ -1,19 +1,27 @@
-// Array Like Object
+// _.from()
 
-const constructArr = function() {
-  // Here ~ Array.prototype.slice.call(arguments) will turn arguments object in an array
+const _ = {};
 
-  const arr = Array.prototype.slice.call(arguments);
-  arr.push("the billiards room?");
+_.from = function(arguments) {
+  if (typeof arguments === "object") {
+    const arr = new Array();
+    for (let key in arguments) {
+      // Now It won't check for Prototype Properties
 
-  console.log(Array.isArray(arr));
-
-  return arr.join(" ");
+      if (arguments.hasOwnProperty(key)) {
+        arr.push(arguments[key]);
+      }
+    }
+    return arr;
+  }
 };
 
-// It'll return ~ "was it in the billiards room?"
+const obj = {
+  0: "one",
+  1: "two",
+  2: "three"
+};
 
-console.log(constructArr("was", "it", "in"));
+const result = _.from(obj);
 
-// False it's an Object that looks like an Array
-console.log(Array.isArray(constructArr));
+console.log(result);
