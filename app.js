@@ -1,29 +1,13 @@
-// REST and SPREAD Operator
+// Arguments Keyword
 
-// SPREAD Operator
-
-const a = [1, 2, 3, 4];
-
-const b = [5, 6, 7, 8];
-
-// We can Merge two Arrays as well.
-
-const c = [...a, ...b];
-
-console.log(c);
-
-// REST Operator
-
-function example(a, b, ...c) {
-  console.log(`${a} ${b} ${c}`);
+function test() {
+  console.log(arguments);
 }
 
-example(a, b, 9, 10, 11, 12, 13, 14, 15);
+test(1, 2);
 
-// REST Operator ~ can return particular element
+// Note: Arrow Functions don't have arugments keyword
 
-function test(a, b, ...c) {
-  console.log(`${a} ${b} ${c[0]} ${c[1]}`);
-}
+const arrowfun = () => console.log(arguments);
 
-test(a, b, 9, 10, 11, 12, 13, 14, 15);
+arrowfun();
