@@ -1,13 +1,16 @@
-// Arguments Keyword
+// Default Parameters
 
-function test() {
+function example(a, b = 2, c) {
   console.log(arguments);
+  console.log(a, b, c);
 }
 
-test(1, 2);
+// Important Note: We've to explicity pass undefined here for the parameter b.
 
-// Note: Arrow Functions don't have arugments keyword
+example(1, undefined, 4);
 
-const arrowfun = () => console.log(arguments);
+function exampleTwo(a, b = 2) {
+  return a + b;
+}
 
-arrowfun();
+console.log(exampleTwo(3)); // It'll return 5
