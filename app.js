@@ -12,9 +12,7 @@ console.log(add(3));
 function addES5(a, b) {
   // Here using Js ~ arguments keyword we can check b is undefined or not, If it's undefine then we set value of b to whatever we like to set as default value.
 
-  if (!arguments[1]) {
-    b = 2;
-  }
+  b = b || 2;
 
   return a + b;
 }
