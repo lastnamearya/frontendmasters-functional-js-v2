@@ -1,24 +1,19 @@
-// Write this function in ES5
+// Array Like Object
 
-const add = function(a, b = 2) {
-  console.log(arguments);
-  return a + b;
+const constructArr = function() {
+  // Here ~ Array.prototype.slice.call(arguments) will turn arguments object in an array
+
+  const arr = Array.prototype.slice.call(arguments);
+  arr.push("the billiards room?");
+
+  console.log(Array.isArray(arr));
+
+  return arr.join(" ");
 };
 
-console.log(add(3));
+// It'll return ~ "was it in the billiards room?"
 
-// ES5 Way
+console.log(constructArr("was", "it", "in"));
 
-function addES5(a, b) {
-  // Here using Js ~ arguments keyword we can check b is undefined or not, If it's undefine then we set value of b to whatever we like to set as default value.
-
-  b = b || 2;
-
-  return a + b;
-}
-
-// It'll return 5
-console.log(addES5(3));
-
-// It'll return 6
-console.log(addES5(3, 3));
+// False it's an Object that looks like an Array
+console.log(Array.isArray(constructArr));
