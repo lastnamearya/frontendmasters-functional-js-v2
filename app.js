@@ -1,19 +1,29 @@
-// Test ~ Function Parameter's length
+// REST and SPREAD Operator
 
-function test(a, b) {
-  console.log(`${a} ${b}`);
+// SPREAD Operator
+
+const a = [1, 2, 3, 4];
+
+const b = [5, 6, 7, 8];
+
+// We can Merge two Arrays as well.
+
+const c = [...a, ...b];
+
+console.log(c);
+
+// REST Operator
+
+function example(a, b, ...c) {
+  console.log(`${a} ${b} ${c}`);
 }
 
-// In case of spread operator, Js will avoid ...dots
+example(a, b, 9, 10, 11, 12, 13, 14, 15);
 
-function test2(a, b, ...args) {}
+// REST Operator ~ can return particular element
 
-// Js will return 0 here
+function test(a, b, ...c) {
+  console.log(`${a} ${b} ${c[0]} ${c[1]}`);
+}
 
-function test3(...args) {}
-
-console.log(test.length);
-
-console.log(test2.length);
-
-console.log(test3.length);
+test(a, b, 9, 10, 11, 12, 13, 14, 15);
