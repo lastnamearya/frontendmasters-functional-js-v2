@@ -1,16 +1,26 @@
-// Default Parameters
+// Write this function in ES5
 
-function example(a, b = 2, c) {
+const add = function(a, b = 2) {
   console.log(arguments);
-  console.log(a, b, c);
-}
+  return a + b;
+};
 
-// Important Note: We've to explicity pass undefined here for the parameter b.
+console.log(add(3));
 
-example(1, undefined, 4);
+// ES5 Way
 
-function exampleTwo(a, b = 2) {
+function addES5(a, b) {
+  // Here using Js ~ arguments keyword we can check b is undefined or not, If it's undefine then we set value of b to whatever we like to set as default value.
+
+  if (!arguments[1]) {
+    b = 2;
+  }
+
   return a + b;
 }
 
-console.log(exampleTwo(3)); // It'll return 5
+// It'll return 5
+console.log(addES5(3));
+
+// It'll return 6
+console.log(addES5(3, 3));
