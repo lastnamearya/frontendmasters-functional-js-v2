@@ -1,22 +1,13 @@
 // A High-Order Function returning a Function
 
-const ifElse = (condition, isTrue, isFalse) => {
-  return condition ? isTrue() : isFalse();
+// Here condition is like Flag: Returns true or false and conditional operates on this Flag.
+
+const ifElse = (condition, fnOne, fnTwo, ...args) => {
+  return condition ? fnOne(...args) : fnTwo(...args);
 };
 
-const isTrue = () => console.log(true);
+const isTrue = args => console.log(args);
 
-const isFalse = () => console.log(false);
+const isFalse = args => console.log(args);
 
-ifElse(true, isTrue, isFalse);
-
-// Passing Arguments
-
-const doMathSoIDontHaveTo = (n, func) => func(n);
-
-const increment = n => n + 1;
-
-const square = n => n * n;
-
-console.log(doMathSoIDontHaveTo(4, increment));
-console.log(doMathSoIDontHaveTo(4, square));
+ifElse(true, isTrue, isFalse, "one", "two", "three");
