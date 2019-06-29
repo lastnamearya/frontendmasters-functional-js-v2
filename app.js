@@ -1,15 +1,27 @@
-// A Simplest String Reversal
+// SPREAD Operator Multiple Cases in High Order Function
 
-function reverseString(string) {
-  const stringArr = [...string];
+// Case 1 ~ Spreading args inside the body of the Main Parent Function
 
-  const reverseArr = stringArr.reverse();
+function test(...args) {
+  // Now args only refrence to the first value passed.
 
-  return reverseArr.join("");
+  return example(...args);
 }
 
-console.log(reverseString("abc"));
+function example(arg) {
+  console.log(arg);
+}
 
-console.log(reverseString("testing"));
+// It'll return 1
 
-console.log(reverseString("JIGYASU"));
+console.log(test(1, 2, 3, 4, 5));
+
+// Case 2: Not Spreading the args in the body of Parent Function
+
+function testTwo(...args) {
+  return example(args);
+}
+
+// It'll return the Whole Array (args) ~ passed as argument.
+
+console.log(testTwo(1, 2, 3, 4, 5));
