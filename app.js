@@ -1,27 +1,11 @@
-// _.from()
+// A High-Order Function returning a Function
 
-const _ = {};
-
-_.from = function(arguments) {
-  if (typeof arguments === "object") {
-    const arr = new Array();
-    for (let key in arguments) {
-      // Now It won't check for Prototype Properties
-
-      if (arguments.hasOwnProperty(key)) {
-        arr.push(arguments[key]);
-      }
-    }
-    return arr;
-  }
+const ifElse = (condition, isTrue, isFalse) => {
+  return condition ? isTrue() : isFalse();
 };
 
-const obj = {
-  0: "one",
-  1: "two",
-  2: "three"
-};
+const isTrue = () => console.log(true);
 
-const result = _.from(obj);
+const isFalse = () => console.log(false);
 
-console.log(result);
+ifElse(true, isTrue, isFalse);
