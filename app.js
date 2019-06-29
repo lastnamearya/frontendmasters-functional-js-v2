@@ -1,27 +1,17 @@
-// SPREAD Operator Multiple Cases in High Order Function
+// A High-Order Function returning a Function
 
-// Case 1 ~ Spreading args inside the body of the Main Parent Function
+// Here condition is like Flag: Returns true or false and conditional operates on this Flag.
 
-function test(...args) {
-  // Now args only refrence to the first value passed.
+const ifElse = function(condition, fnOne, fnTwo) {
+  // It'll give us an array Starting from index 3
 
-  return example(...args);
-}
+  const args = Array.prototype.slice.call(arguments, 3);
 
-function example(arg) {
-  console.log(arg);
-}
+  return condition ? fnOne.apply(this, args) : fnTwo.apply(this, args);
+};
 
-// It'll return 1
+const isTrue = args => console.log(args);
 
-console.log(test(1, 2, 3, 4, 5));
+const isFalse = args => console.log(args);
 
-// Case 2: Not Spreading the args in the body of Parent Function
-
-function testTwo(...args) {
-  return example(args);
-}
-
-// It'll return the Whole Array (args) ~ passed as argument.
-
-console.log(testTwo(1, 2, 3, 4, 5));
+ifElse(true, isTrue, isFalse, ["one", "two", "three"]);
