@@ -1,13 +1,15 @@
-// A High-Order Function returning a Function
+// A Simplest String Reversal
 
-// Here condition is like Flag: Returns true or false and conditional operates on this Flag.
+function reverseString(string) {
+  const stringArr = [...string];
 
-const ifElse = (condition, fnOne, fnTwo, ...args) => {
-  return condition ? fnOne(...args) : fnTwo(...args);
-};
+  const reverseArr = stringArr.reverse();
 
-const isTrue = args => console.log(args);
+  return reverseArr.join("");
+}
 
-const isFalse = args => console.log(args);
+console.log(reverseString("abc"));
 
-ifElse(true, isTrue, isFalse, "one", "two", "three");
+console.log(reverseString("testing"));
+
+console.log(reverseString("JIGYASU"));
