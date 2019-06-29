@@ -1,13 +1,14 @@
-// Closure
+const myAlert = () => {
+  const x = "Help! I think I found a clue!";
 
-function closure(name) {
-  const a = "Hello";
+  let count = 0;
 
-  function child() {
-    console.log(`${a} ${name}`);
-  }
+  const alerter = () => {
+    console.log(`${x} ${++count}`);
+  };
 
-  return child();
-}
+  return alerter();
+};
 
-const ref = closure("JIGYASU");
+const funcAlert = myAlert();
+const funcAlert2 = myAlert();
