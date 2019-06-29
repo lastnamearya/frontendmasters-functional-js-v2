@@ -9,6 +9,8 @@ const forEach = (list, callback) => {
     for (let i = 0; i < list.length; i++) {
       callback(list[i]);
     }
+  } else {
+    console.error("Please pass an array");
   }
 };
 
@@ -27,6 +29,8 @@ const map = (list, callback) => {
       result.push(output);
     }
     return result;
+  } else {
+    console.error("Please pass an array");
   }
 };
 
@@ -48,6 +52,8 @@ const filter = (list, callback) => {
       output ? result.push(list[i]) : null;
     }
     return result;
+  } else {
+    console.error("Please pass an array");
   }
 };
 
@@ -61,40 +67,48 @@ console.log(filterResult);
 
 const reduce = (list, callback, initialValue) => {
   if (Array.isArray(list)) {
-    let result = initialValue;
-
     const callbackString = callback.toString();
     const stringArr = [...callbackString];
 
+    let result;
+
     if (stringArr.includes("+")) {
+      if (initialValue || initialValue === 0) {
+        result = initialValue;
+      } else {
+        initialValue = 0;
+        result = initialValue;
+      }
+
       for (let i = 0; i < list.length; i++) {
         result += callback(initialValue, list[i]);
       }
     } else if (stringArr.includes("*")) {
+      if (initialValue || initialValue === 0) {
+        result = initialValue;
+      } else {
+        initialValue = 1;
+        result = initialValue;
+      }
+
       for (let i = 0; i < list.length; i++) {
         result *= callback(initialValue, list[i]);
       }
     }
 
     return result;
+  } else {
+    console.error("Please pass an array");
   }
 };
 
-const reduceSum = reduce(
-  exArr,
-  function(a, b) {
-    return a + b;
-  },
-  0
-);
+const reduceSum = reduce(exArr, function(a, b) {
+  return a + b;
+});
 
-const reduceMultiple = reduce(
-  exArr,
-  function(a, b) {
-    return a * b;
-  },
-  1
-);
+const reduceMultiple = reduce(exArr, function(a, b) {
+  return a * b;
+});
 
 console.log(reduceSum);
 
