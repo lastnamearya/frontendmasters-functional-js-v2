@@ -1,25 +1,19 @@
-// Composition Function
+// Currying in Functional Programming
 
-const _ = {};
-
-_.composition = function(func1, func2) {
-  if (typeof func1 === "function" && typeof func2 === "function") {
-    const func2output = func2();
-
-    const finaloutput = func1(func2output);
-
-    return finaloutput;
-  }
+const abc = (a, b) => {
+  return [a, b];
 };
 
-const one = x => {
-  return x + 1;
+// Sample Example for 2 Arguments
+
+const curry = fn => {
+  return arg => {
+    return arg2 => {
+      return fn(arg, arg2);
+    };
+  };
 };
 
-const two = () => {
-  return 1;
-};
+const curried = curry(abc);
 
-const testResult = _.composition(one, two);
-
-console.log(testResult);
+console.log(curried(1)(2));
