@@ -1,14 +1,25 @@
-const myAlert = () => {
-  const x = "Help! I think I found a clue!";
+// Composition Function
 
-  let count = 0;
+const _ = {};
 
-  const alerter = () => {
-    console.log(`${x} ${++count}`);
-  };
+_.composition = function(func1, func2) {
+  if (typeof func1 === "function" && typeof func2 === "function") {
+    const func2output = func2();
 
-  return alerter();
+    const finaloutput = func1(func2output);
+
+    return finaloutput;
+  }
 };
 
-const funcAlert = myAlert();
-const funcAlert2 = myAlert();
+const one = x => {
+  return x + 1;
+};
+
+const two = () => {
+  return 1;
+};
+
+const testResult = _.composition(one, two);
+
+console.log(testResult);
